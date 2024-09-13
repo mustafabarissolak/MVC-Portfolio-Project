@@ -1,0 +1,36 @@
+﻿<section id="about" class="s-about target-section">
+    <div class="row narrow section-intro has-bottom-sep">
+        <div class="col-full text-center">
+            <h3>Hakkımda daha fazlası </h3>
+            <br />
+            <p>Yazılıma ve gelişen teknolojiye meraklı bir genç...</p>
+        </div>
+    </div>
+    <div class="row about-content about-me">
+        <div class="col-six tab-full left">
+            <h3>Ben Kimim?</h3>
+            <p>
+                &nbsp;&nbsp;&nbsp;&nbsp;2022 yılında Kayseri Üniversitesi Teknik Bilimler Meslek Yüksekokulu'nda Kontrol ve Otomasyon Teknolojisi Bölümü'nde eğitimime başladım.
+                Yazılım dünyasına olan ilgim, karşılaştığım C#-Unity-SQL eğitim serisi ile hız kazandı.
+                Bu süreçte, .NET Forms uygulamaları geliştirerek yazılım becerilerimi güçlendirdim.
+            </p>
+            <p>
+                &nbsp;&nbsp;&nbsp;&nbsp;Yapay Zeka ve Veri Bilimi alanlarına duyduğum merak, Python öğrenme kararı almamı sağladı.
+                OpenCV kütüphanesi ile gerçekleştirdiğim gerçek zamanlı görüntü işleme projesi, bu alandaki yetkinliğimi artırdı.
+                BTK Akademi, Udemy ve Youtube gibi platformlardan aldığım eğitimlerle kendimi sürekli geliştirdim.
+            </p>
+            <p>
+                &nbsp;&nbsp;&nbsp;&nbsp;Şu anda, Anadolu Üniversitesi Açıköğretim Fakültesi'nde Bilgisayar Programcılığı eğitimi alıyor ve C#, .NET Core, Web API ve mikroservisler gibi teknolojiler üzerinde uzmanlaşıyorum.
+                Gelecekte, yazılım dünyasında daha büyük adımlar atmayı ve öğrendiğim bilgileri projelerime entegre ederek sektörde iz bırakmayı hedefliyorum.
+            </p>
+
+        </div>
+        @await Component.InvokeAsync("_SkillComponentPartial")
+    </div>
+    <div class="row about-content about-content--buttons">
+        <div class="col-six tab-full left">
+            <a href="/files/cv.pdf" class="btn btn--primary full-width" download="cv.pdf" alt="cv.pdf">CV İndir</a>
+        </div>
+    </div>
+    @await Component.InvokeAsync("_ExperienceComponentPartial")
+</section>

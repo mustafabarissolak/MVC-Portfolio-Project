@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html class="no-js" lang="tr">
+@await Component.InvokeAsync("_HeadComponentPartial")
+<body id="top">
+    @await Component.InvokeAsync("_NavbarComponentPartial")
+    @await Component.InvokeAsync("_FeatureComponentPartial")
+    @await Component.InvokeAsync("_AboutComponentPartial")
+    @await Component.InvokeAsync("_ContactCompanentPartial")
+    @await Component.InvokeAsync("_FooterComponentPartial")
+    <script src="~/hola-master/js/modernizr.js"></script>
+    <script src="~/hola-master/js/pace.min.js"></script>
+    <script src="~/hola-master/js/jquery-3.2.1.min.js"></script>
+    <script src="~/hola-master/js/plugins.js"></script>
+    <script src="~/hola-master/js/main.js"></script>
+    <script>
+        document.querySelectorAll('a.smoothscroll').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('data-scroll');
+                document.getElementById(targetId).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+
+</body>
+</html>

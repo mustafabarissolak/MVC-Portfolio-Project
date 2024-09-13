@@ -1,0 +1,127 @@
+﻿@model Portfolio_MVC.Models.Contact
+
+<section id="contact" class="s-contact target-section">
+    <div class="overlay" data-image-src="@Url.Content("~/images/backgroung_image.jpg")" alt="backgroung_image.jpg"></div>
+    <div class="row narrow section-intro">
+        <div class="col-full">
+            <h3>İletişim</h3>
+            <br />
+            <br />
+        </div>
+    </div>
+    <div class="row contact__main">
+        <div class="col-eight tab-full contact__form">
+            <form id="contactForm">
+                <fieldset>
+                    @* <div class="form-field">
+                        <input name="Name" class="form-control full-width" placeholder="İsim" />
+                        <span class="text-danger" id="NameError"></span>
+                    </div>
+                    <div class="form-field">
+                        <input name="Email" class="form-control full-width" placeholder="E-Mail" />
+                        <span class="text-danger" id="EmailError"></span>
+                    </div>
+                    <div class="form-field">
+                        <input name="Subject" class="form-control full-width" placeholder="Konu" />
+                        <span class="text-danger" id="DescriptionError"></span>
+                    </div>
+                    <div class="form-field">
+                        <textarea name="Message" class="form-control full-width" placeholder="Mesaj"></textarea>
+                        <span class="text-danger" id="MessageError"></span>
+                    </div> *@
+
+                    <div class="form-field">
+                        <input name="Name" type="text" id="contactName" placeholder="Ad - Soyad" aria-required="true" class="full-width">
+                    </div>
+                    <div class="form-field">
+                        <input name="Email" type="email" id="contactEmail" placeholder="Email" aria-required="true" class="full-width">
+                    </div>
+                    <div class="form-field">
+                        <input name="Subject" type="text" id="contactSubject" placeholder="Konu"  class="full-width">
+                    </div>
+                    <div class="form-field">
+                        <textarea name="Message" id="contactMessage" placeholder="Mesaj" rows="10" cols="50" aria-required="true" class="full-width"></textarea>
+                    </div>
+
+
+                    <button type="submit" class="btn--primary full-width">Gönder</button>
+                    <div class="submit-loader form-field">
+                        <div class="text-loader">Gönderiliyor...</div>
+                        <div class="s-loader">
+                            <div class="bounce1"></div>
+                            <div class="bounce2"></div>
+                            <div class="bounce3"></div>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+
+            <!-- contact-warning -->
+            <div id="messageWarning" class="message-warning" style="display:none;">
+            </div>
+
+            <!-- contact-success -->
+            <div id="messageSuccess" class="message-success" style="display:none;">
+            </div>
+        </div>
+        <div class="col-four tab-full contact__infos">
+            <h4 class="h06">E-mail</h4>
+            <p>mustafabarissolak@gmail.com</p>
+            <h4 class="h06">Adres</h4>
+            <p>Kayseri/Türkiye</p>
+
+            <h4 class="h06">Sosyal Medya Hesaplarım</h4>
+            <div class="col-full">
+                <ul class="footer-social">
+                    <li>
+                        <a href="https://www.linkedin.com/in/mustafa-baris-solak-6aa22828a/">
+                            <i class="im im-linkedin" aria-hidden="true"></i><span>LinkedIn</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/mustafabarissolak">
+                            <i class="im im-github" aria-hidden="true"></i><span>GitHub</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/barissolak_">
+                            <i class="im im-instagram" aria-hidden="true"></i><span>Instagram</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#contactForm').on('submit', function (event) {
+            event.preventDefault(); // Formun normal şekilde gönderilmesini engeller
+
+            var formData = $(this).serialize(); // Form verilerini serialize eder
+
+            $.ajax({
+                url: '@Url.Action("Submit", "Contact")', // Form verilerini göndereceğimiz URL
+                type: 'POST',
+                data: formData,
+                success: function (response) {
+                    if (response.success) {
+                        $('#messageSuccess').text(response.message).show();
+                        $('#messageWarning').hide();
+                        $('#contactForm')[0].reset(); // Formu sıfırlar
+                    } else {
+                        $('#messageWarning').text(response.message).show();
+                        $('#messageSuccess').hide();
+                    }
+                },
+                error: function () {
+                    $('#messageWarning').text('Bir hata oluştu. Lütfen tekrar deneyin.').show();
+                    $('#messageSuccess').hide();
+                }
+            });
+        });
+    });
+
+</script>

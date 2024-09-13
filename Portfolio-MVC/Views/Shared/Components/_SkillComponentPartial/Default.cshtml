@@ -1,0 +1,16 @@
+﻿@model List<Portfolio_MVC.Models.Skill>
+
+<div class="col-six tab-full right">
+    <h3>Skills</h3>
+    <ul class="skill-bars">
+        @foreach (var item in Model)
+        {
+            string skill_bar_class = "progress percent";
+            string skill_value = $"{skill_bar_class}{item.Value}";
+            <li>
+                <div class="@skill_value"><span>@item.Value%</span></div>
+                <strong>@item.Name</strong>
+            </li>
+        }
+    </ul>
+</div>

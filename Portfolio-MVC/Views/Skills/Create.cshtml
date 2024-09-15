@@ -1,0 +1,25 @@
+﻿@model Portfolio_MVC.Models.Skill
+
+@{
+    ViewData["Title"] = "Create Skill";
+    Layout = "~/Views/Layout/Index.cshtml";
+}
+
+<h1>Create Skill</h1>
+
+
+<form asp-action="Create">
+    <div class="form-group">
+        <label asp-for="Name" class="control-label"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Value" class="control-label"></label>
+        <input asp-for="Value" class="form-control" />
+        <span asp-validation-for="Value" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+</form>

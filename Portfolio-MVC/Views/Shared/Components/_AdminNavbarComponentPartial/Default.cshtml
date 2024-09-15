@@ -1,0 +1,22 @@
+﻿<div class="main-header">
+    <div class="logo-header" style="text-align:center">
+        <a class="logo" >
+            Admin Paneli
+        </a>
+    </div>
+    <nav class="navbar navbar-header navbar-expand-lg">
+        <div class="container-fluid">
+            <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
+                <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
+                    <span>Admin</span>
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="@Url.Action("AccountSettings", "Admin")"><i class="ti-settings"></i> Account Setting</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="@Url.Action("Logout", "Admin")"><i class="fa fa-power-off"></i> Logout</a>
+                </ul>
+            </ul>
+        </div>
+    </nav>
+</div>

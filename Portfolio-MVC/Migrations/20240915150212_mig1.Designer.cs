@@ -12,7 +12,7 @@ using Portfolio_MVC;
 namespace Portfolio_MVC.Migrations
 {
     [DbContext(typeof(MyPortfolioContext))]
-    [Migration("20240913053200_mig1")]
+    [Migration("20240915150212_mig1")]
     partial class mig1
     {
         /// <inheritdoc />
@@ -24,6 +24,27 @@ namespace Portfolio_MVC.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("Portfolio_MVC.Models.Admin", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Admin");
+                });
 
             modelBuilder.Entity("Portfolio_MVC.Models.Contact", b =>
                 {
@@ -78,6 +99,33 @@ namespace Portfolio_MVC.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Skills");
+                });
+
+            modelBuilder.Entity("Portfolio_MVC.Models.ToDoList", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ToDoList");
                 });
 #pragma warning restore 612, 618
         }

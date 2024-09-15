@@ -1,0 +1,23 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    @await Component.InvokeAsync("_AdminHeadComponentPartial")
+</head>
+<body>
+    <div class="wrapper">
+        @await Component.InvokeAsync("_AdminNavbarComponentPartial")
+        @await Component.InvokeAsync("_AdminSideComponentPartial")
+        <div class="main-panel">
+            <div class="content">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+    @await Component.InvokeAsync("_AdminScriptsComponentPartial")
+</body>
+</html>
+

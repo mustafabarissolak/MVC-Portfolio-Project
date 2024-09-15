@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Portfolio_MVC.Models.Skill>
+@{
+    ViewData["Title"] = "Skills";
+    Layout = "~/Views/Layout/Index.cshtml";
+}
+
+<div class="container">
+    <h1>Skills</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Value</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var skill in Model)
+            {
+                <tr>
+                    <td>@skill.Name</td>
+                    <td>@skill.Value</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@skill.Id" class="btn btn-warning">Güncelle</a>
+                        <form asp-action="Delete" asp-route-id="@skill.Id" method="post" style="display:inline;">
+                            <button type="submit" class="btn btn-danger">Sil</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <p>
+        <a asp-action="Create" class="btn btn-primary">Create New Skill</a>
+    </p>
+</div>

@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Portfolio_MVC.Models;
 using System.ComponentModel.DataAnnotations;
 
 namespace Portfolio_MVC.Controllers
 {
-    public class SkillsController : Controller
+	[Authorize]
+	public class SkillsController : Controller
     {
         private readonly MyPortfolioContext _context;
 
@@ -19,15 +21,12 @@ namespace Portfolio_MVC.Controllers
 			var skills = _context.Skills.ToList();
             return View(skills);
         }
-
-		// GET: Skills/Create
 		public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Skills/Create
-        [HttpPost]
+		[HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(Skill skill)
         {
@@ -40,8 +39,7 @@ namespace Portfolio_MVC.Controllers
             return View(skill);
         }
 
-        // GET: Skills/Edit/5
-        public IActionResult Edit(int id)
+		public IActionResult Edit(int id)
         {
             var skill = _context.Skills.Find(id);
             if (skill == null)
@@ -51,8 +49,7 @@ namespace Portfolio_MVC.Controllers
             return View(skill);
         }
 
-        // POST: Skills/Edit/5
-        [HttpPost]
+		[HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Edit(int id, Skill skill)
         {
@@ -70,8 +67,7 @@ namespace Portfolio_MVC.Controllers
             return View(skill);
         }
 
-        // POST: Skills/Delete/5
-        [HttpPost]
+		[HttpPost]
         public IActionResult Delete(int id)
         {
             var skill = _context.Skills.Find(id);

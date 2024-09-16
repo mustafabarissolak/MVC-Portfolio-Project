@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Portfolio_MVC.Models;
 
 namespace Portfolio_MVC.Controllers
 {
-    public class ToDoListController : Controller
+	[Authorize]
+	public class ToDoListController : Controller
     {
         private readonly MyPortfolioContext _context;
 

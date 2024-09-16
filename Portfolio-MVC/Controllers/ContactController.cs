@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Portfolio_MVC.Models;
 using Portfolio_MVC;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MyPortfolioMVCProject.Controllers
 {
+	[Authorize]
 	public class ContactController : Controller
 	{
 		private readonly MyPortfolioContext _context;
@@ -37,7 +39,7 @@ namespace MyPortfolioMVCProject.Controllers
 				return Json(new { success = false, message = errorMessage });
 			}
 		}
-		public IActionResult Inbox()
+		public IActionResult Index()
 		{
 			// Unread message count
 			ViewData["MessagesCount"] = _context.Contact.Count(c => !c.IsRead);

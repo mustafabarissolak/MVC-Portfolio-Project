@@ -1,21 +1,19 @@
 ﻿@model ToDoList
 
 @{
-    ViewData["Title"] = "CreateToDoList";
+    ViewData["Title"] = "Yapılacakler - Yeni";
     Layout = "~/Views/Layout/Index.cshtml";
 }
 
 <div class="content">
 	<div class="container-fluid">
-		<h4 class="page-title">Yapılacaklar</h4>
 		<div class="row">
 			<div class="col-md-12">
 				<div class="card">
 					<div class="card-header">
-						<div class="card-title">Yeni Yapılacak İşlem Ekleme Sayfası</div>
+						<div class="card-title">Yapılacakler - Yeni</div>
 					</div>
 					<div class="card-body">
-
 						<form method="post">
 							<label>Başlık & İçerik</label>
 							<input type="text" asp-for="Title" class="form-control" />
@@ -28,7 +26,7 @@
 							<br />
 							<button class="btn btn-primary">Ekle</button>
 						</form>
-						<button class="btn btn-secondary mt-3" onclick="window.history.back()">Geri Dön</button>
+						<button class="btn btn-secondary mt-3" onclick="window.history.back()">Geri</button>
 					</div>
 				</div>
 			</div>

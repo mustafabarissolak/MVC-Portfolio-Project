@@ -1,14 +1,13 @@
 ﻿@model List<ToDoList>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Yapılacakler";
     Layout = "~/Views/Layout/Index.cshtml";
     int count = 0;
 }
 
 <div class="content">
     <div class="container-fluid">
-        <h4 class="page-title">Yapılacaklar</h4>
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
@@ -54,7 +53,7 @@
                                 }
                             </tbody>
                         </table>
-                        <a asp-action="Create" class="btn btn-primary">Yeni Yapılacak İşlem Girişi</a>
+                        <a asp-action="Create" class="btn btn-primary">Yeni Yapılacak İş Ekle</a>
                     </div>
                 </div>
             </div>

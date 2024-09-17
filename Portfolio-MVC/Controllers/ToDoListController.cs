@@ -25,7 +25,6 @@ namespace Portfolio_MVC.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public IActionResult Create(ToDoList toDo)
         {
             if (ModelState.IsValid)
@@ -47,7 +46,6 @@ namespace Portfolio_MVC.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public IActionResult Update(int id, ToDoList toDo)
         {
             if (id != toDo.Id)
@@ -81,7 +79,7 @@ namespace Portfolio_MVC.Controllers
             var value = _context.ToDoList.Find(id);
             value.Status = true;
             _context.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction(nameof(Index));
         }
 
         public IActionResult ChangeToDoListStatusToFalse(int id)
@@ -89,7 +87,7 @@ namespace Portfolio_MVC.Controllers
             var value = _context.ToDoList.Find(id);
             value.Status = false;
             _context.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction(nameof(Index));
         }
     }
 }

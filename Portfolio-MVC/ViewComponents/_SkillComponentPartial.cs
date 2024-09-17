@@ -7,7 +7,6 @@ namespace MyPortfolioUdemy.ViewComponents
     {
         private readonly MyPortfolioContext _context;
 
-        // Constructor üzerinden DbContext inject ediliyor
         public _SkillComponentPartial(MyPortfolioContext context)
         {
             _context = context;

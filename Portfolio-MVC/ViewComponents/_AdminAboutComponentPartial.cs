@@ -2,7 +2,7 @@
 
 namespace Portfolio_MVC.ViewComponents
 {
-    public class _AdminToDoListComponentPartial : ViewComponent
+    public class _AdminAboutConponentPartial : ViewComponent
     {
         public IViewComponentResult Invoke()
         {

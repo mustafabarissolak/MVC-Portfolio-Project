@@ -1,26 +1,22 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Portfolio_MVC.Models;
-using System.ComponentModel.DataAnnotations;
 
-namespace Portfolio_MVC.Controllers
+namespace Portfolio_MVC.ViewComponents
 {
     [Authorize]
-    public class SkillsController : Controller
+    public class ExperienceController : Controller
     {
         private readonly MyPortfolioContext _context;
 
-        public SkillsController(MyPortfolioContext context)
+        public ExperienceController(MyPortfolioContext context)
         {
             _context = context;
         }
-        [HttpGet]
         public IActionResult Index()
         {
-            ViewData["SkillsCount"] = _context.Skills.Count();
-            var skills = _context.Skills.ToList();
-            return View(skills);
+            var experience = _context.Experience.ToList();
+            return View(experience);
         }
         public IActionResult Create()
         {
@@ -28,51 +24,50 @@ namespace Portfolio_MVC.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Skill skill)
+        public IActionResult Create(Experience experience)
         {
             if (ModelState.IsValid)
             {
-                _context.Skills.Add(skill);
+                _context.Experience.Add(experience);
                 _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
-            return View(skill);
+            return View(experience);
         }
         public IActionResult Edit(int id)
         {
-            var skill = _context.Skills.Find(id);
-            if (skill == null)
+            var experience = _context.Experience.Find(id);
+            if (experience == null)
             {
                 return NotFound();
             }
-            return View(skill);
+            return View(experience);
         }
 
         [HttpPost]
-        public IActionResult Edit(int id, Skill skill)
+        public IActionResult Edit(int id, Experience experience)
         {
-            if (id != skill.Id)
+            if (id != experience.Id)
             {
                 return NotFound();
             }
 
             if (ModelState.IsValid)
             {
-                _context.Update(skill);
+                _context.Update(experience);
                 _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
-            return View(skill);
+            return View(experience);
         }
-        [HttpPost]
         public IActionResult Delete(int id)
         {
-            var skill = _context.Skills.Find(id);
-            if (skill == null)
+            var experience = _context.Experience.Find(id);
+            if (experience == null)
             {
                 return NotFound();
             }
-            _context.Skills.Remove(skill);
+            _context.Experience.Remove(experience);
             _context.SaveChanges();
             return RedirectToAction(nameof(Index));
         }

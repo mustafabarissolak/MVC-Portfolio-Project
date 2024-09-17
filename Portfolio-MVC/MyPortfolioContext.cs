@@ -15,5 +15,7 @@ namespace Portfolio_MVC
         public DbSet<Skill> Skills { get; set; }
         public DbSet<ToDoList> ToDoList { get; set; }
         public DbSet<Admin> Admin { get; set; }
+        public DbSet<About> About { get; set; }
+        public DbSet<Experience> Experience { get; set; }
     }
 }

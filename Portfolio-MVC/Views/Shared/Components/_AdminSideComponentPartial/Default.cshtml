@@ -1,29 +1,28 @@
-﻿
-<div class="sidebar">
+﻿<div class="sidebar">
     <div class="scrollbar-inner sidebar-wrapper">
-        <div class="user" style="text-align:center">
-            <div class="info">
-                <a class="collapse-link" data-toggle="collapse" href="#collapseExample" aria-expanded="true">
-                    <span>Admin</span>
-                </a>
-                <div class="collapse in" id="collapseExample" aria-expanded="true">
-                    <ul class="nav">
-                        <li>
-                            <a href="@Url.Action("AccountSettings", "Admin")">
-                                <span class="link-collapse">Settings</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="@Url.Action("Logout", "Admin")">
-                                <span class="link-collapse">Logout</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
         <ul class="nav">
+            <li class="nav-item">
+                <div class="user">
+                    <a class="collapse-link " data-toggle="collapse" href="#collapseExample" aria-expanded="true">
+                        <span><i class="la la-user">Admin</i></span>
+                    </a>
+                    <div class="collapse in" id="collapseExample" aria-expanded="true">
+                        <ul class="nav">
+                            <li>
+                                <a href="@Url.Action("Settings", "Admin")">
+
+                                    <span class="link-collapse">Settings</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Logout", "Admin")">
+                                    <span class="link-collapse">Logout</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
             <li class="nav-item">
                 <a asp-controller="Admin" asp-action="Index">
                     <i class="la la-home"></i>
@@ -34,27 +33,39 @@
                 <a asp-controller="Contact" asp-action="Index">
                     <i class="la la-envelope"></i>
                     <p>Messages</p>
-                    <span class="badge badge-count">@ViewData["MessagesCount"]</span>
+                    <span class="badge badge-success">@ViewData["MessagesCount"]</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a asp-controller="Skills" asp-action="Index">
                     <i class="la la-certificate"></i>
                     <p>Skills</p>
-                    <span class="badge badge-count">@ViewData["SkillsCount"]</span>
+                    <span class="badge badge-success">@ViewData["SkillsCount"]</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a asp-controller="ToDoList" asp-action="Index">
-                    <i class="la la-check-circle"></i>
+                    <i class="la la-calendar-check-o"></i>
                     <p>To Do List</p>
                     <span class="badge badge-success">@ViewData["ToDoListCount"]</span>
                 </a>
             </li>
             <li class="nav-item">
+                <a asp-controller="About" asp-action="Index">
+                    <i class="la la-info"></i>
+                    <p>About</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a asp-controller="Experience" asp-action="Index">
+                    <i class="la la-trophy"></i>
+                    <p>Experiences</p>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a asp-controller="Home" asp-action="Index">
-                    <i class="la la-home"></i>
-                    <p>Siteye Git</p>
+                    <i class="la la-globe"></i>
+                    <p>Go To Web Site</p>
                 </a>
             </li>
         </ul>

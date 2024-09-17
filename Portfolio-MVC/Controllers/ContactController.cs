@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace MyPortfolioMVCProject.Controllers
 {
-	[Authorize]
+	
 	public class ContactController : Controller
 	{
 		private readonly MyPortfolioContext _context;
@@ -14,7 +14,8 @@ namespace MyPortfolioMVCProject.Controllers
 		{
 			_context = context;
 		}
-		[HttpGet]
+        [Authorize]
+        [HttpGet]
 		public JsonResult GetUnreadMessagesCount()
 		{
 			var unreadMessagesCount = _context.Contact.Count(c => !c.IsRead);
@@ -39,14 +40,16 @@ namespace MyPortfolioMVCProject.Controllers
 				return Json(new { success = false, message = errorMessage });
 			}
 		}
-		public IActionResult Index()
+        [Authorize]
+        public IActionResult Index()
 		{
 			// Unread message count
 			ViewData["MessagesCount"] = _context.Contact.Count(c => !c.IsRead);
 			var values = _context.Contact.ToList();
 			return View(values);
 		}
-		public IActionResult ChangeIsReadToTrue(int id)
+        [Authorize]
+        public IActionResult ChangeIsReadToTrue(int id)
 		{
 			var value = _context.Contact.Find(id);
 			if (value == null)
@@ -55,24 +58,26 @@ namespace MyPortfolioMVCProject.Controllers
 			}
 			value.IsRead = true;
 			_context.SaveChanges();
-			return RedirectToAction("Inbox");
+			return RedirectToAction("Index");
 		}
-		public IActionResult ChangeIsReadToFalse(int id)
+        [Authorize]
+        public IActionResult ChangeIsReadToFalse(int id)
 		{
 			var value = _context.Contact.Find(id);
 			value.IsRead = false;
 			_context.SaveChanges();
-			return RedirectToAction("Inbox");
+			return RedirectToAction("Index");
 		}
-
-		public IActionResult DeleteMessage(int id)
+        [Authorize]
+        public IActionResult DeleteMessage(int id)
 		{
 			var value = _context.Contact.Find(id);
 			_context.Contact.Remove(value);
 			_context.SaveChanges();
-			return RedirectToAction("Inbox");
+			return RedirectToAction("Index");
 		}
-		public IActionResult MessageDetail(int id)
+        [Authorize]
+        public IActionResult MessageDetail(int id)
 		{
 			var value = _context.Contact.Find(id);
 			return View(value);

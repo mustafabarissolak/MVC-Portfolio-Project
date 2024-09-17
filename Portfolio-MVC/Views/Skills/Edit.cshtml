@@ -1,25 +1,39 @@
-﻿@model Portfolio_MVC.Models.Skill
+﻿@model Skill
 
 @{
     ViewData["Title"] = "Edit Skill";
     Layout = "~/Views/Layout/Index.cshtml";
 }
 
-<h1>Edit Skill</h1>
 
-<form asp-action="Edit">
-    <div class="form-group">
-        <label asp-for="Name" class="control-label"></label>
-        <input asp-for="Name" class="form-control" />
-        <span asp-validation-for="Name" class="text-danger"></span>
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Güncelle</div>
+                    </div>
+                    <div class="card-body">
+                        <form asp-action="Edit">
+                            <div class="form-group">
+                                <label asp-for="Name" class="control-label"></label>
+                                <input asp-for="Name" class="form-control" />
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Value" class="control-label"></label>
+                                <input asp-for="Value" class="form-control" />
+                                <span asp-validation-for="Value" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="Save" class="btn btn-primary" />
+                            </div>
+                        </form>
+                        <button class="btn btn-secondary mt-3" onclick="window.history.back()">Geri Dön</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="form-group">
-        <label asp-for="Value" class="control-label"></label>
-        <input asp-for="Value" class="form-control" />
-        <span asp-validation-for="Value" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <input type="submit" value="Save" class="btn btn-primary" />
-    </div>
-    <button class="btn btn-secondary mt-3" onclick="window.history.back()">Geri Dön</button>
-</form>
+</div>

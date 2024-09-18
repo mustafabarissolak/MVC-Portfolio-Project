@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Portfolio_MVC.Models;
 using System.Security.Claims;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
 namespace Portfolio_MVC.Controllers
@@ -18,7 +17,6 @@ namespace Portfolio_MVC.Controllers
         public AdminController(MyPortfolioContext context)
         {
             _context = context;
-            _passwordHasher = new PasswordHasher<Admin>();
         }
         // GET: /Admin/Index
         [Authorize]
@@ -44,7 +42,7 @@ namespace Portfolio_MVC.Controllers
             // Kullanıcı adı bulunamadı veya şifre eşleşmiyor
             if (admin == null || admin.Password != password)
             {
-                ModelState.AddModelError("", "Invalid username or password.");
+                ModelState.AddModelError("", "Kullanıcı adı veya şifre hatalı.");
                 return View();
             }
 
